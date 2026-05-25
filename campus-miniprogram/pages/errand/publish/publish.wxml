@@ -1,0 +1,81 @@
+<view class="page">
+  <view class="card">
+    <view class="title">{{ pageTitle }}</view>
+    <view class="subtitle">
+      {{ editingId ? "修改后会重新进入管理员审核，审核通过后再次展示给同学。" : "填写取件点、送达点和赏金，提交后会进入管理员审核。" }}
+    </view>
+  </view>
+
+  <view class="card">
+    <input
+      class="field"
+      placeholder="订单标题"
+      data-field="title"
+      value="{{ form.title }}"
+      bindinput="handleInput"
+    />
+    <textarea
+      class="textarea"
+      placeholder="代拿说明"
+      data-field="description"
+      value="{{ form.description }}"
+      bindinput="handleInput"
+    ></textarea>
+    <input
+      class="field"
+      type="digit"
+      placeholder="请输入赏金数字，例如 3.00"
+      data-field="reward"
+      value="{{ form.reward }}"
+      bindinput="handleInput"
+    />
+    <input
+      class="field"
+      placeholder="联系方式"
+      data-field="contact_info"
+      value="{{ form.contact_info }}"
+      bindinput="handleInput"
+    />
+    <view class="subtitle">联系方式只会在有人接单后，向当前接单方展示。</view>
+    <input
+      class="field"
+      placeholder="期望送达时间，例如 今晚八点前、下课后都行"
+      data-field="expect_time"
+      value="{{ form.expect_time }}"
+      bindinput="handleInput"
+    />
+  </view>
+
+  <map-picker
+    title="取件地址"
+    placeholder="搜索取件点或宿舍楼"
+    value="{{ form.pickLocation }}"
+    bind:change="handlePickLocationChange"
+  />
+  <map-picker
+    title="送达地址"
+    placeholder="搜索送达地点"
+    value="{{ form.deliverLocation }}"
+    bind:change="handleDeliverLocationChange"
+  />
+
+  <view class="card">
+    <view class="subtitle" style="margin-bottom: 20rpx;">相关图片（可选）</view>
+    <image-upload
+      images="{{ form.images }}"
+      max-count="{{ uploadSettings.maxImages }}"
+      max-size-mb="{{ uploadSettings.maxSizeMb }}"
+      bind:change="handleImageChange"
+      bind:uploadingchange="handleImageUploadingChange"
+    />
+  </view>
+
+  <button
+    class="primary-btn"
+    loading="{{ submitting || imageUploading }}"
+    disabled="{{ submitting || imageUploading }}"
+    bindtap="handleSubmit"
+  >
+    {{ imageUploading ? "图片上传中..." : submitText }}
+  </button>
+</view>

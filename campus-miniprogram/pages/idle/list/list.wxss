@@ -1,0 +1,71 @@
+.service-page {
+  background: #ffffff;
+  padding-bottom: 148rpx;
+}
+
+.hero-block {
+  padding: 10rpx 4rpx 16rpx;
+  margin-bottom: 12rpx;
+}
+
+.hero-block .title {
+  font-size: 42rpx;
+  letter-spacing: 0;
+}
+
+.hero-block .subtitle {
+  margin-top: 12rpx;
+  color: #667085;
+}
+
+.search-card {
+  background: #fff;
+  padding: 20rpx;
+  border-color: #e8edf2;
+  box-shadow: 0 12rpx 30rpx rgba(15, 23, 42, 0.07);
+}
+
+.field {
+  width: 100%;
+  height: 82rpx;
+  padding: 0 24rpx;
+  border-radius: 12rpx;
+  background: #f8fafc;
+  border: 1rpx solid #e6ebf0;
+  box-sizing: border-box;
+  color: #17212b;
+  font-size: 26rpx;
+}
+
+.action-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12rpx;
+  margin-top: 18rpx;
+}
+
+.action-row button {
+  width: 100%;
+  height: 72rpx;
+  line-height: 72rpx;
+  padding: 0 8rpx;
+  font-size: 24rpx;
+}
+
+.location-tip {
+  margin-top: 16rpx;
+  color: #667085;
+  font-size: 23rpx;
+  line-height: 1.6;
+}
+
+.goods-list {
+  margin-top: 22rpx;
+}
+
+.empty-card {
+  text-align: center;
+  padding: 48rpx 32rpx;
+  background: #fafafa;
+  box-shadow: none;
+}

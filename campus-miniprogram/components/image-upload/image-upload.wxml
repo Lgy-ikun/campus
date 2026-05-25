@@ -1,0 +1,17 @@
+<view>
+  <button class="outline-btn" loading="{{ uploading }}" disabled="{{ uploading }}" bindtap="chooseImage">
+    {{ uploading ? "上传中..." : "选择图片" }}
+  </button>
+  <view wx:if="{{ uploading }}" class="helper-text">图片上传中，请先等待上传完成</view>
+  <view wx:else class="helper-text">
+    可多次选择图片，单次最多选择9张，最多上传{{ maxCount }}张
+    <block wx:if="{{ maxSizeMb > 0 }}">，单张不超过{{ maxSizeMb }}MB</block>
+    <block wx:else>，单张大小不限制</block>
+  </view>
+  <view wx:if="{{ images.length }}" class="preview-list">
+    <view wx:for="{{ images }}" wx:key="*this" class="preview-item">
+      <image class="preview-image" src="{{ item }}" mode="aspectFill" data-src="{{ item }}" binderror="handleImageError" />
+      <view class="remove-btn" data-index="{{ index }}" bindtap="handleRemove">×</view>
+    </view>
+  </view>
+</view>

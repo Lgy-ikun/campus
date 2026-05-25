@@ -1,0 +1,43 @@
+<view class="page notice-page">
+  <view class="card hero-card">
+    <view class="title">系统通知中心</view>
+    <view class="subtitle">审核结果、代拿进度和平台提醒都会汇总在这里。</view>
+    <view class="hero-footer">
+      <view class="hero-badge">{{ unreadCount ? ('未读 ' + unreadCount + ' 条') : '全部已读' }}</view>
+      <button class="outline-btn hero-btn" disabled="{{ !unreadCount }}" bindtap="handleReadAll">全部已读</button>
+    </view>
+  </view>
+
+  <view class="card filter-card">
+    <view class="filter-row">
+      <view class="filter-chip {{ currentFilter === 'all' ? 'active' : '' }}" data-value="all" bindtap="handleFilterChange">全部</view>
+      <view class="filter-chip {{ currentFilter === 'unread' ? 'active' : '' }}" data-value="unread" bindtap="handleFilterChange">未读</view>
+      <view class="filter-chip {{ currentFilter === 'read' ? 'active' : '' }}" data-value="read" bindtap="handleFilterChange">已读</view>
+    </view>
+  </view>
+
+  <view wx:if="{{ list.length }}">
+    <view
+      wx:for="{{ list }}"
+      wx:key="notice_id"
+      class="card notice-card {{ item.isRead ? 'is-read' : 'is-unread' }}"
+      data-index="{{ index }}"
+      bindtap="handleOpenNotice"
+    >
+      <view class="notice-head">
+        <view class="notice-chip {{ item.isRead ? 'muted' : '' }}">{{ item.categoryText }}</view>
+        <view class="notice-head-right">
+          <view wx:if="{{ !item.isRead }}" class="notice-dot"></view>
+          <view class="notice-time">{{ item.createTimeText }}</view>
+        </view>
+      </view>
+      <view class="notice-title">{{ item.title }}</view>
+      <view class="notice-content">{{ item.content }}</view>
+      <view wx:if="{{ item.actionText }}" class="notice-action">{{ item.actionText }}</view>
+    </view>
+  </view>
+
+  <view wx:else class="card empty-card">
+    <view class="subtitle">{{ currentFilter === 'all' ? '当前还没有系统通知。' : currentFilter === 'unread' ? '当前没有未读通知。' : '当前没有已读通知。' }}</view>
+  </view>
+</view>

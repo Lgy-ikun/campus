@@ -1,0 +1,42 @@
+<view class="page">
+  <view class="card">
+    <view class="title">我的代拿订单</view>
+    <view class="subtitle">这里会同时展示你发布的订单和你已经接下的订单。</view>
+    <view class="filter-row">
+      <view class="filter-chip {{ currentFilter === 'all' ? 'active' : '' }}" data-value="all" bindtap="handleFilterChange">全部</view>
+      <view class="filter-chip {{ currentFilter === 'publish' ? 'active' : '' }}" data-value="publish" bindtap="handleFilterChange">我发布的</view>
+      <view class="filter-chip {{ currentFilter === 'receive' ? 'active' : '' }}" data-value="receive" bindtap="handleFilterChange">我接单的</view>
+      <view class="filter-chip {{ currentFilter === 'rejected' ? 'active' : '' }}" data-value="rejected" bindtap="handleFilterChange">已驳回</view>
+    </view>
+    <button class="primary-btn" style="margin-top: 20rpx;" bindtap="goPublish">继续发布</button>
+  </view>
+
+  <view wx:if="{{ list.length }}">
+    <view wx:for="{{ list }}" wx:key="order_id" class="card">
+      <view data-id="{{ item.order_id }}" bindtap="goDetail">
+        <view class="row-top">
+          <view class="row-title">{{ item.title }}</view>
+          <view class="row-price">¥{{ item.reward }}</view>
+        </view>
+        <view class="row-meta">订单编号：{{ item.order_id }}</view>
+        <view class="row-meta">{{ item.roleText }}</view>
+        <view class="row-meta">状态：{{ item.statusText }}</view>
+        <view wx:if="{{ item.isPublisher && item.receiver_id }}" class="row-meta">接单人：{{ item.receiver_name || "接单同学" }}</view>
+        <view wx:if="{{ item.isReceiver }}" class="row-meta">发布人：{{ item.publisher_name || "发布方" }}</view>
+        <view wx:if="{{ item.expect_time }}" class="row-meta">期望送达：{{ item.expect_time }}</view>
+        <view class="row-meta">时间：{{ item.createTimeText }}</view>
+        <view wx:if="{{ item.reject_reason }}" class="row-meta">处理原因：{{ item.reject_reason }}</view>
+      </view>
+      <button wx:if="{{ item.canEdit }}" class="primary-btn" data-id="{{ item.order_id }}" catchtap="goEdit">重新编辑并提交</button>
+      <button wx:if="{{ item.canCancel }}" class="danger-btn" data-id="{{ item.order_id }}" catchtap="handleCancel">取消订单</button>
+      <button wx:if="{{ item.isReceiver && item.status === 2 }}" class="primary-btn" data-id="{{ item.order_id }}" catchtap="handleDelivered">已送达</button>
+      <button wx:if="{{ item.isPublisher && item.status === 3 }}" class="primary-btn" data-id="{{ item.order_id }}" catchtap="handleConfirm">确认完成</button>
+      <button wx:if="{{ item.isPublisher && item.can_release_receiver }}" class="outline-btn" data-id="{{ item.order_id }}" catchtap="handleRelease">取消当前接单并重新开放</button>
+      <button wx:if="{{ (item.isPublisher && item.receiver_id) || item.isReceiver }}" class="outline-btn" data-index="{{ index }}" catchtap="goChat">进入聊天</button>
+    </view>
+  </view>
+
+  <view wx:else class="card">
+    <view class="subtitle">你还没有任何代拿记录。</view>
+  </view>
+</view>

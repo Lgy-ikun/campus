@@ -1,0 +1,73 @@
+<view class="page">
+  <view class="card">
+    <view class="title">校园便利服务</view>
+    <view class="subtitle">欢迎回来，登录后继续使用校园服务。</view>
+  </view>
+
+  <!-- 手机号一键登录能力暂不开放，先隐藏入口，只保留微信登录。 -->
+  <!-- <view class="card">
+    <view class="filter-row">
+      <view class="filter-chip {{ loginType === 'wechat' ? 'active' : '' }}" data-type="wechat" bindtap="handleSwitch">微信登录</view>
+      <view class="filter-chip {{ loginType === 'phone' ? 'active' : '' }}" data-type="phone" bindtap="handleSwitch">手机号登录</view>
+    </view>
+  </view> -->
+
+  <view class="card">
+    <button class="primary-btn" loading="{{ loading }}" bindtap="handleWechatLogin">微信一键登录</button>
+  </view>
+
+  <!-- <view class="card">
+    <view class="login-section-title">手机号登录</view>
+    <view class="subtitle">当前账号暂未开通企业认证手机号能力，请先使用微信登录。</view>
+
+    <view class="phone-mask-panel">
+      <view>
+        <view class="mask-label">本机号码</view>
+        <view class="mask-value">{{ phoneMask || "暂未获取" }}</view>
+      </view>
+      <button class="outline-btn refresh-mask-btn" loading="{{ phoneMaskLoading }}" bindtap="refreshPhoneMask">重新获取</button>
+    </view>
+
+    <view wx:if="{{ phoneMaskError }}" class="warning-text">{{ phoneMaskError }}</view>
+
+    <view class="agreement-row" data-field="agreeProduct" bindtap="handleToggleAgreement">
+      <checkbox checked="{{ agreeProduct }}" color="#12a594" />
+      <view class="agreement-text">
+        已阅读同意
+        <text class="agreement-link" catchtap="handleOpenProductAgreement">《校园便利服务隐私协议》</text>
+      </view>
+    </view>
+
+    <view class="agreement-row" data-field="agreeOperator" bindtap="handleToggleAgreement">
+      <checkbox checked="{{ agreeOperator }}" color="#12a594" />
+      <view class="agreement-text">
+        已阅读同意
+        <text class="agreement-link" catchtap="handleOpenOperatorAgreement">《{{ operatorAgreementName || "运营商认证服务条款" }}》</text>
+        并授权校园便利服务获取本机号码
+      </view>
+    </view>
+
+    <button
+      wx:if="{{ !phoneLoginReady }}"
+      class="primary-btn"
+      loading="{{ loading }}"
+      disabled="{{ loading }}"
+      bindtap="handlePhoneLoginGuard"
+    >
+      本机号码一键登录
+    </button>
+
+    <button
+      wx:if="{{ phoneLoginReady }}"
+      class="primary-btn"
+      open-type="phoneOneClickLogin"
+      bindphoneoneclicklogin="handlePhoneOneClickLogin"
+      loading="{{ loading }}"
+      disabled="{{ loading }}"
+    >
+      本机号码一键登录
+    </button>
+
+    <view class="hint-text">{{ phoneLoginHint }}</view>
+  </view> -->
+</view>

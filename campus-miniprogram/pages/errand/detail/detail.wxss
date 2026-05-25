@@ -1,0 +1,92 @@
+.page {
+  background: #ffffff;
+  padding-bottom: 48rpx;
+}
+
+.reward {
+  margin-top: 18rpx;
+  font-size: 46rpx;
+  font-weight: 700;
+  color: #d45712;
+  line-height: 1.1;
+}
+
+.section-title {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #17212b;
+  margin-bottom: 12rpx;
+}
+
+.refresh-btn {
+  margin-top: 18rpx;
+}
+
+.location-block {
+  margin-top: 24rpx;
+  padding: 24rpx;
+  border-radius: 18rpx;
+  background: #f8fafc;
+  border: 1rpx solid #e8edf2;
+}
+
+.location-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 10rpx;
+}
+
+.location-title {
+  font-size: 26rpx;
+  font-weight: 700;
+  color: #17212b;
+}
+
+.location-distance {
+  flex-shrink: 0;
+  padding: 8rpx 14rpx;
+  border-radius: 999rpx;
+  background: #e8f7f5;
+  color: #0f7f73;
+  font-size: 22rpx;
+  line-height: 1.2;
+}
+
+.location-distance-soft {
+  background: #eef3ff;
+  color: #355ab8;
+}
+
+.location-btn {
+  margin-top: 18rpx;
+}
+
+.image-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14rpx;
+}
+
+.detail-image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 12rpx;
+  background: #f5f7fa;
+  border: 1rpx solid #edf0f3;
+  box-sizing: border-box;
+}
+
+.outline-btn,
+.primary-btn {
+  margin-top: 16rpx;
+}
+
+.danger-btn {
+  margin-top: 16rpx;
+  background: #fff1f2;
+  border: 1rpx solid #fecdd3;
+  color: #be123c;
+}
+

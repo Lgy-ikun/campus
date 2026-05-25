@@ -1,0 +1,126 @@
+.service-page {
+  background: #ffffff;
+  padding-bottom: 148rpx;
+}
+
+.hero-card {
+  padding: 10rpx 4rpx 16rpx;
+  border: none;
+  box-shadow: none;
+  margin-bottom: 12rpx;
+}
+
+.hero-card .title {
+  font-size: 42rpx;
+  letter-spacing: 0;
+}
+
+.hero-card .subtitle {
+  margin-top: 12rpx;
+  color: #667085;
+}
+
+.search-card {
+  padding: 20rpx;
+  border-color: #e8edf2;
+  box-shadow: 0 12rpx 30rpx rgba(15, 23, 42, 0.07);
+}
+
+.field {
+  width: 100%;
+  height: 82rpx;
+  padding: 0 24rpx;
+  border-radius: 12rpx;
+  background: #f8fafc;
+  border: 1rpx solid #e6ebf0;
+  box-sizing: border-box;
+  color: #17212b;
+  font-size: 26rpx;
+}
+
+.action-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12rpx;
+  margin-top: 18rpx;
+}
+
+.action-row button {
+  width: 100%;
+  height: 72rpx;
+  line-height: 72rpx;
+  padding: 0 8rpx;
+  font-size: 24rpx;
+}
+
+.location-tip {
+  margin-top: 18rpx;
+  color: #667085;
+  font-size: 22rpx;
+  line-height: 1.5;
+}
+
+.order-card {
+  margin-bottom: 20rpx;
+}
+
+.row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18rpx;
+}
+
+.row-title {
+  flex: 1;
+  font-size: 31rpx;
+  font-weight: 700;
+  color: #17212b;
+  line-height: 1.35;
+}
+
+.row-price {
+  flex-shrink: 0;
+  padding: 6rpx 12rpx;
+  border-radius: 10rpx;
+  background: #fff7ed;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #d45712;
+  line-height: 1.2;
+}
+
+.row-meta {
+  margin-top: 8rpx;
+  color: #667085;
+  font-size: 23rpx;
+  line-height: 1.55;
+}
+
+.distance-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-top: 14rpx;
+}
+
+.distance-tag {
+  padding: 8rpx 14rpx;
+  border-radius: 999rpx;
+  background: #e8f7f5;
+  color: #0f7f73;
+  font-size: 22rpx;
+  line-height: 1.2;
+}
+
+.distance-tag-soft {
+  background: #f4f6f8;
+  color: #56616f;
+}
+
+.empty-card {
+  text-align: center;
+  padding: 48rpx 32rpx;
+  background: #fafafa;
+  box-shadow: none;
+}

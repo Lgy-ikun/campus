@@ -1,0 +1,61 @@
+<view class="page">
+  <view class="card">
+    <view class="title">{{ pageTitle }}</view>
+    <view class="subtitle">
+      {{ editingId ? "保存后会重新进入管理员审核，通过后才会重新展示。" : "商品提交后会进入管理员审核，通过后才会在市场中展示。" }}
+    </view>
+    <view class="subtitle">闲置交易默认通过平台内部聊天联系，不需要提前填写私人联系方式。</view>
+  </view>
+
+  <view class="card">
+    <input
+      class="field"
+      placeholder="商品标题"
+      data-field="title"
+      value="{{ form.title }}"
+      bindinput="handleInput"
+    />
+    <input
+      class="field"
+      type="digit"
+      placeholder="请输入价格数字，例如 35.00"
+      data-field="price"
+      value="{{ form.price }}"
+      bindinput="handleInput"
+    />
+    <textarea
+      class="textarea"
+      placeholder="商品描述"
+      data-field="description"
+      value="{{ form.description }}"
+      bindinput="handleInput"
+    ></textarea>
+  </view>
+
+  <map-picker
+    title="交易地点"
+    placeholder="搜索校内交易地点"
+    value="{{ form.tradeLocation }}"
+    bind:change="handleTradeLocationChange"
+  />
+
+  <view class="card">
+    <view class="subtitle" style="margin-bottom: 20rpx;">商品图片</view>
+    <image-upload
+      images="{{ form.images }}"
+      max-count="{{ uploadSettings.maxImages }}"
+      max-size-mb="{{ uploadSettings.maxSizeMb }}"
+      bind:change="handleImageChange"
+      bind:uploadingchange="handleImageUploadingChange"
+    />
+  </view>
+
+  <button
+    class="primary-btn"
+    loading="{{ submitting || imageUploading }}"
+    disabled="{{ submitting || imageUploading }}"
+    bindtap="handleSubmit"
+  >
+    {{ imageUploading ? "图片上传中..." : submitText }}
+  </button>
+</view>

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "发布闲置",
+  "usingComponents": {
+    "image-upload": "/components/image-upload/image-upload",
+    "map-picker": "/components/map-picker/map-picker"
+  }
+}

@@ -1,0 +1,124 @@
+.profile-page {
+  background: linear-gradient(180deg, #f8eee5 0%, #f7f1eb 220rpx, #f7f1eb 100%);
+}
+
+.profile-top {
+  display: flex;
+  gap: 22rpx;
+  align-items: center;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 32rpx;
+  background: #edf3ec;
+  flex-shrink: 0;
+}
+
+.avatar-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #8a5a44 0%, #b9846f 100%);
+  color: #fff;
+  font-size: 44rpx;
+  font-weight: 700;
+}
+
+.profile-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.role-pill {
+  display: inline-flex;
+  margin-top: 14rpx;
+  padding: 8rpx 18rpx;
+  border-radius: 999rpx;
+  background: rgba(138, 90, 68, 0.1);
+  color: #8a5a44;
+  font-size: 22rpx;
+  font-weight: 700;
+}
+
+.action-row {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 24rpx;
+}
+
+.action-row button {
+  flex: 1;
+}
+
+.section-title {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #3f2d26;
+}
+
+.info-row,
+.menu-item {
+  padding: 22rpx 0;
+  border-bottom: 1rpx solid #edf0ea;
+}
+
+.info-row:last-child,
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  font-size: 24rpx;
+  color: #6b7280;
+}
+
+.info-value {
+  margin-top: 8rpx;
+  font-size: 28rpx;
+  color: #3f2d26;
+  font-weight: 600;
+}
+
+.menu-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16rpx;
+}
+
+.menu-title {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #3f2d26;
+}
+
+.menu-badge {
+  min-width: 44rpx;
+  padding: 8rpx 14rpx;
+  border-radius: 999rpx;
+  background: #dc2626;
+  color: #fff;
+  font-size: 22rpx;
+  font-weight: 700;
+  text-align: center;
+}
+
+.menu-desc {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #5b6473;
+}
+
+.action-card .outline-btn {
+  width: 100%;
+}
+
+.logout-btn {
+  width: 100%;
+  margin-top: 20rpx;
+  border-radius: 999rpx;
+  background: #dc2626;
+  color: #fff;
+}

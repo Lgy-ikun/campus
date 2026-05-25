@@ -1,0 +1,77 @@
+<view class="page detail-page" wx:if="{{ detail }}">
+  <view wx:if="{{ detail.coverImage }}" class="cover-card">
+    <image class="cover-image" src="{{ detail.coverImage }}" mode="aspectFill" data-current="{{ detail.coverImage }}" data-src="{{ detail.coverImage }}" bindtap="previewImage" binderror="handleImageError" />
+  </view>
+
+  <view class="card">
+    <view class="detail-head">
+      <view class="price">￥{{ detail.price }}</view>
+      <view class="status-chip">{{ detail.statusText }}</view>
+    </view>
+    <view class="title goods-title">{{ detail.title }}</view>
+    <view class="seller-row">
+      <view>卖家：{{ detail.nickname || "校园用户" }}</view>
+      <view>商品编号：{{ detail.goods_id }}</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="detail-title">商品描述</view>
+    <view class="subtitle">{{ detail.description || "卖家暂未填写描述" }}</view>
+  </view>
+
+  <view wx:if="{{ detail.trade_address }}" class="card">
+    <view class="detail-title">交易地点</view>
+    <view class="subtitle">{{ detail.trade_address }}</view>
+    <view wx:if="{{ locationReady }}" class="distance-text">
+      {{ detail.distanceText ? "距你 " + detail.distanceText : "已获取定位，暂未计算出距离" }}
+    </view>
+    <view wx:else class="distance-text">暂未获取到你的定位，可以点击刷新后重新计算距离。</view>
+    <view class="location-actions">
+      <button class="outline-btn refresh-btn" bindtap="handleRefreshDistance">刷新距离</button>
+      <button wx:if="{{ detail.canNavigate }}" class="outline-btn nav-btn" bindtap="handleNavigate">导航到交易点</button>
+    </view>
+    <map
+      wx:if="{{ detail.trade_latitude && detail.trade_longitude }}"
+      class="detail-map"
+      latitude="{{ detail.trade_latitude }}"
+      longitude="{{ detail.trade_longitude }}"
+      scale="16"
+      markers="{{ locationMarkers }}"
+    />
+  </view>
+
+  <view wx:if="{{ detail.reject_reason }}" class="card">
+    <view class="detail-title">处理原因</view>
+    <view class="reason-box">{{ detail.reject_reason }}</view>
+  </view>
+
+  <view class="card">
+    <view class="detail-title">联系说明</view>
+    <view class="subtitle">闲置商品默认不展示私人联系方式，建议通过平台聊天先沟通商品情况和交易地点。</view>
+  </view>
+
+  <view wx:if="{{ detail.otherImages.length }}" class="card">
+    <view class="detail-title">更多图片</view>
+    <view class="image-list">
+      <image
+        wx:for="{{ detail.otherImages }}"
+        wx:key="*this"
+        class="detail-image"
+        src="{{ item }}"
+        mode="aspectFill"
+        data-current="{{ item }}"
+        data-src="{{ item }}"
+        bindtap="previewImage"
+        binderror="handleImageError"
+      />
+    </view>
+  </view>
+
+  <view class="bottom-bar">
+    <button wx:if="{{ !isOwner }}" class="outline-btn bar-btn" bindtap="handleReport">举报</button>
+    <button wx:if="{{ !isOwner && detail.status === 1 }}" class="primary-btn bar-btn main-action" bindtap="goChat">联系卖家</button>
+    <button wx:if="{{ isOwner && detail.canEdit }}" class="primary-btn bar-btn main-action" bindtap="handleEdit">编辑并提交审核</button>
+    <button wx:if="{{ isOwner && detail.status === 1 }}" class="outline-btn bar-btn" bindtap="handleDown">下架</button>
+  </view>
+</view>

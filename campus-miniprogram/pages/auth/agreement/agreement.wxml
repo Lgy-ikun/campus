@@ -1,0 +1,7 @@
+<web-view wx:if="{{ url }}" src="{{ url }}"></web-view>
+<view wx:else class="page">
+  <view class="card">
+    <view class="title">暂未获取到协议地址</view>
+    <view class="subtitle">请返回登录页重新获取本机号码后再打开协议。</view>
+  </view>
+</view>

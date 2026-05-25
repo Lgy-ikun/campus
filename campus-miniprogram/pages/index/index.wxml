@@ -1,0 +1,92 @@
+<view class="page-wrapper">
+  <swiper
+    class="swiper-list"
+    indicator-dots="{{ true }}"
+    indicator-color="rgba(255, 255, 255, 0.44)"
+    indicator-active-color="#ffffff"
+    autoplay="{{ true }}"
+    interval="{{ 2800 }}"
+    duration="{{ 500 }}"
+    circular="{{ true }}"
+  >
+    <swiper-item wx:for="{{ heroSlides }}" wx:key="title">
+      <view class="hero-slide hero-{{ item.theme }}">
+        <view class="hero-copy">
+          <view class="hero-eyebrow">{{ item.eyebrow }}</view>
+          <view class="hero-title">{{ item.title }}</view>
+          <view class="hero-desc">{{ item.desc }}</view>
+          <view class="hero-tags">
+            <view wx:for="{{ item.tags }}" wx:for-item="tag" wx:key="*this" class="hero-tag">{{ tag }}</view>
+          </view>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <view class="home-body">
+    <!-- 登录卡片 -->
+    <view class="login-card {{ isLoginSuccess ? 'is-logged' : '' }}" hover-class="pressed-soft" bindtap="handleLoginBanner">
+      <view class="login-copy">
+        <view class="login-kicker">{{ loginKicker }}</view>
+        <view class="login-title">{{ loginTitle }}</view>
+      </view>
+      <view class="login-chip">{{ loginActionText }}</view>
+    </view>
+
+    <!-- 通知条 -->
+    <view class="notice-strip" hover-class="pressed-soft" bindtap="handleNoticeStrip">
+      <view class="notice-mark"></view>
+      <view class="notice-text">{{ messageSummary }}</view>
+      <view class="notice-action">查看</view>
+    </view>
+
+    <!-- 🔥 修复版：美观功能区 + 文字100%显示 -->
+    <view class="home-actions">
+      <!-- 上排：2个按钮 -->
+      <view class="action-row top-row">
+        <view
+          wx:for="{{ homeActions }}"
+          wx:if="{{ index < 2 }}"
+          wx:key="key"
+          class="action-item big-item"
+          hover-class="pressed"
+          data-kind="{{ item.kind }}"
+          data-url="{{ item.url }}"
+          bindtap="handleAction"
+        >
+          <view class="action-icon">
+            <image src="{{ item.icon }}" mode="aspectFit" />
+            <view class="action-badge">{{ item.badge }}</view>
+          </view>
+          <view class="action-texts">
+            <view class="action-title">{{ item.title }}</view>
+            <view class="action-desc">{{ item.desc }}</view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 下排：1大+1小 按钮 -->
+      <view class="action-row bottom-row">
+        <view
+          wx:for="{{ homeActions }}"
+          wx:if="{{ index >= 2 }}"
+          wx:key="key"
+          class="action-item {{ index == 2 ? 'big-item' : 'small-item' }}"
+          hover-class="pressed"
+          data-kind="{{ item.kind }}"
+          data-url="{{ item.url }}"
+          bindtap="handleAction"
+        >
+          <view class="action-icon">
+            <image src="{{ item.icon }}" mode="aspectFit" />
+            <view class="action-badge">{{ item.badge }}</view>
+          </view>
+          <view class="action-texts">
+            <view class="action-title">{{ item.title }}</view>
+            <view class="action-desc">{{ item.desc }}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

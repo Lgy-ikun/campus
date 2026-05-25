@@ -1,0 +1,65 @@
+.edit-page {
+  background: linear-gradient(180deg, #f8eee5 0%, #f7f1eb 220rpx, #f7f1eb 100%);
+}
+
+.avatar-row {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 32rpx;
+  background: #edf3ec;
+  flex-shrink: 0;
+}
+
+.avatar-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #8a5a44 0%, #b9846f 100%);
+  color: #fff;
+  font-size: 44rpx;
+  font-weight: 700;
+}
+
+.avatar-btn {
+  flex: 1;
+}
+
+.field-item {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #edf0ea;
+}
+
+.field-item:last-child {
+  border-bottom: none;
+}
+
+.field-label {
+  font-size: 24rpx;
+  color: #6b7280;
+}
+
+.field-input,
+.field-static {
+  margin-top: 12rpx;
+  min-height: 44rpx;
+  font-size: 28rpx;
+  color: #3f2d26;
+}
+
+.field-input {
+  padding: 14rpx 0;
+}
+
+.field-static {
+  line-height: 1.6;
+}
+
+.save-btn {
+  margin-top: 8rpx;
+}

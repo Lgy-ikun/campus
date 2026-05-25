@@ -1,0 +1,73 @@
+.page {
+  background: #ffffff;
+  padding-bottom: 48rpx;
+}
+
+.row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18rpx;
+}
+
+.row-title {
+  flex: 1;
+  font-size: 31rpx;
+  font-weight: 700;
+  color: #17212b;
+  line-height: 1.35;
+}
+
+.row-price {
+  flex-shrink: 0;
+  padding: 6rpx 12rpx;
+  border-radius: 10rpx;
+  background: #fff7ed;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #d45712;
+  line-height: 1.2;
+}
+
+.row-meta {
+  margin-top: 8rpx;
+  color: #667085;
+  font-size: 23rpx;
+  line-height: 1.55;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-top: 20rpx;
+}
+
+.filter-chip {
+  padding: 10rpx 18rpx;
+  border-radius: 10rpx;
+  background: #f8fafc;
+  border: 1rpx solid #e6ebf0;
+  color: #667085;
+  font-size: 24rpx;
+  line-height: 1.4;
+}
+
+.filter-chip.active {
+  background: #168d75;
+  border-color: #168d75;
+  color: #fff;
+}
+
+.outline-btn,
+.primary-btn {
+  margin-top: 16rpx;
+}
+
+.danger-btn {
+  margin-top: 16rpx;
+  background: #fff1f2;
+  border: 1rpx solid #fecdd3;
+  color: #be123c;
+}
+

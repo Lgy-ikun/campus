@@ -1,0 +1,51 @@
+<view class="card map-card">
+  <view class="title section-title">{{ title }}</view>
+  <view class="subtitle">可搜索地址，也可以在地图上手动选点。</view>
+
+  <map
+    class="location-map"
+    latitude="{{ mapLatitude }}"
+    longitude="{{ mapLongitude }}"
+    scale="16"
+    markers="{{ markers }}"
+    show-location
+    bindtap="handleMapTap"
+  />
+
+  <view class="search-row">
+    <input
+      class="field search-field"
+      placeholder="{{ placeholder }}"
+      value="{{ keyword }}"
+      bindinput="onAddressInput"
+      confirm-type="search"
+      bindconfirm="handleSearch"
+    />
+    <button class="outline-btn search-btn" loading="{{ loading }}" bindtap="handleSearch">搜索</button>
+  </view>
+
+  <view class="location-actions">
+    <button class="outline-btn location-btn" loading="{{ locating }}" bindtap="handleUseCurrentLocation">当前位置</button>
+    <button class="outline-btn location-btn" bindtap="handleChooseOnMap">地图选点</button>
+  </view>
+
+  <view wx:if="{{ poiList.length }}" class="poi-list">
+    <view
+      wx:for="{{ poiList }}"
+      wx:key="id"
+      class="poi-item"
+      data-address="{{ item.name }} {{ item.address }}"
+      data-location="{{ item.location }}"
+      bindtap="handleSelectPoi"
+    >
+      <view class="poi-name">{{ item.name }}</view>
+      <view class="poi-address">{{ item.address }}</view>
+    </view>
+  </view>
+
+  <input class="field" placeholder="详细地址" value="{{ value.address }}" bindinput="onAddressInput" />
+
+  <view wx:if="{{ value.latitude && value.longitude }}" class="selected-tip">
+    已选位置：{{ value.address || "地图选点" }}
+  </view>
+</view>

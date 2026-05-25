@@ -1,0 +1,35 @@
+<view class="page service-page">
+  <view class="hero-block">
+    <view class="title">闲置物品</view>
+    <view class="subtitle">看看附近同学正在转让什么，先聊清楚再交易。</view>
+  </view>
+
+  <view class="card search-card">
+    <input
+      class="field"
+      placeholder="搜索标题或描述"
+      value="{{ keyword }}"
+      bindinput="handleInput"
+      confirm-type="search"
+      bindconfirm="loadData"
+    />
+    <view class="action-row">
+      <button class="outline-btn" loading="{{ loading }}" bindtap="loadData">搜索</button>
+      <button class="outline-btn" bindtap="goMyGoods">我的发布</button>
+      <button class="primary-btn" bindtap="goPublish">发布闲置</button>
+    </view>
+    <view class="location-tip">
+      {{ locationReady ? "已按你当前位置估算交易距离。" : "未获取定位时仍可浏览商品，进入详情后也可以导航到交易点。" }}
+    </view>
+  </view>
+
+  <view wx:if="{{ list.length }}" class="goods-list">
+    <view wx:for="{{ list }}" wx:key="goods_id" data-id="{{ item.goods_id }}" bindtap="goDetail">
+      <goods-card item="{{ item }}" />
+    </view>
+  </view>
+
+  <view wx:else class="card empty-card">
+    <view class="subtitle">暂时没有符合条件的闲置物品，换个关键词再试试。</view>
+  </view>
+</view>

@@ -1,0 +1,43 @@
+<view class="page profile-page">
+  <view class="card profile-card">
+    <view class="profile-top">
+      <image wx:if="{{ userInfo.avatar }}" class="avatar" src="{{ userInfo.avatar }}" mode="aspectFill" />
+      <view wx:else class="avatar avatar-fallback">{{ avatarText }}</view>
+      <view class="profile-main">
+        <view class="title">{{ displayName }}</view>
+        <view class="role-pill">{{ role === 'admin' ? '管理员' : '学生用户' }}</view>
+        <view class="subtitle">
+          {{ role === 'admin' ? '这里可以维护管理员姓名和手机号。' : '这里可以维护头像、昵称和手机号。' }}
+        </view>
+      </view>
+    </view>
+    <view class="action-row">
+      <button class="outline-btn" bindtap="handleRefresh">刷新资料</button>
+      <button class="primary-btn" bindtap="handleEdit">编辑资料</button>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">账号信息</view>
+    <view wx:for="{{ profileRows }}" wx:key="label" class="info-row">
+      <view class="info-label">{{ item.label }}</view>
+      <view class="info-value">{{ item.value }}</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">常用入口</view>
+    <view wx:for="{{ menus }}" wx:key="title" class="menu-item" data-url="{{ item.url }}" bindtap="handleNavigate">
+      <view class="menu-head">
+        <view class="menu-title">{{ item.title }}</view>
+        <view wx:if="{{ item.badgeText }}" class="menu-badge">{{ item.badgeText }}</view>
+      </view>
+      <view class="menu-desc">{{ item.desc }}</view>
+    </view>
+  </view>
+
+  <view class="card action-card">
+    <button class="outline-btn" bindtap="handlePassword">修改密码</button>
+    <button class="logout-btn" bindtap="handleLogout">退出登录</button>
+  </view>
+</view>

@@ -1,0 +1,150 @@
+.chat-page {
+  background: linear-gradient(180deg, #f8eee5 0%, #f7f1eb 220rpx, #f7f1eb 100%);
+}
+
+.outline-btn {
+  margin-top: 20rpx;
+}
+
+.notice-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18rpx;
+}
+
+.notice-entry-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.notice-entry-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #3f2d26;
+}
+
+.notice-entry-desc {
+  margin-top: 10rpx;
+  color: #5b6473;
+  font-size: 24rpx;
+  line-height: 1.6;
+}
+
+.notice-entry-badge,
+.notice-entry-arrow {
+  flex-shrink: 0;
+}
+
+.notice-entry-badge {
+  min-width: 52rpx;
+  padding: 10rpx 16rpx;
+  border-radius: 999rpx;
+  background: #dc2626;
+  color: #fff;
+  font-size: 24rpx;
+  font-weight: 700;
+  text-align: center;
+}
+
+.notice-entry-arrow {
+  color: #8a5a44;
+  font-size: 24rpx;
+  font-weight: 700;
+}
+
+.search-card {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.search-input {
+  flex: 1;
+  height: 76rpx;
+  padding: 0 22rpx;
+  border-radius: 16rpx;
+  background: #f4f7ef;
+  font-size: 26rpx;
+}
+
+.search-clear {
+  flex-shrink: 0;
+  color: #8a5a44;
+  font-size: 24rpx;
+  font-weight: 600;
+}
+
+.session-card {
+  position: relative;
+}
+
+.session-name-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.session-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.session-name {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #3f2d26;
+}
+
+.session-time,
+.session-meta,
+.session-content,
+.session-hint {
+  margin-top: 10rpx;
+  color: #5b6473;
+  font-size: 24rpx;
+}
+
+.session-content-row {
+  display: flex;
+  align-items: center;
+  gap: 14rpx;
+  margin-top: 10rpx;
+}
+
+.session-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.session-thumb {
+  width: 76rpx;
+  height: 76rpx;
+  border-radius: 14rpx;
+  background: #eef2ec;
+  flex-shrink: 0;
+}
+
+.session-pinned {
+  padding: 6rpx 14rpx;
+  border-radius: 999rpx;
+  background: #8a5a44;
+  color: #fff;
+  font-size: 20rpx;
+}
+
+.session-unread {
+  position: absolute;
+  right: 24rpx;
+  bottom: 24rpx;
+  padding: 8rpx 16rpx;
+  border-radius: 999rpx;
+  background: #dc2626;
+  color: #fff;
+  font-size: 22rpx;
+}
+
+.empty-card {
+  text-align: center;
+}

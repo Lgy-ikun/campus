@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "闲置市场",
+  "usingComponents": {
+    "goods-card": "/components/goods-card/goods-card"
+  }
+}

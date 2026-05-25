@@ -1,0 +1,24 @@
+.order-card {
+  margin-bottom: 20rpx;
+  padding: 28rpx;
+  border-radius: 16rpx;
+  background: #ffffff;
+  border: 1rpx solid #edf0f3;
+  box-shadow: 0 10rpx 28rpx rgba(15, 23, 42, 0.06);
+  box-sizing: border-box;
+}
+
+.order-title {
+  font-size: 31rpx;
+  font-weight: 700;
+  color: #17212b;
+  line-height: 1.35;
+}
+
+.order-meta {
+  margin-top: 8rpx;
+  color: #667085;
+  font-size: 23rpx;
+  line-height: 1.55;
+}
+

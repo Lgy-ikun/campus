@@ -1,0 +1,76 @@
+{
+  "pages": [
+    "pages/auth/index",
+    "pages/auth/agreement/agreement",
+    "pages/index/index",
+    "pages/idle/list/list",
+    "pages/idle/publish/publish",
+    "pages/idle/detail/detail",
+    "pages/idle/my-goods/my-goods",
+    "pages/errand/list/list",
+    "pages/errand/publish/publish",
+    "pages/errand/detail/detail",
+    "pages/errand/my-order/my-order",
+    "pages/notice/list/list",
+    "pages/chat/list/list",
+    "pages/chat/detail/detail",
+    "pages/profile/index/index",
+    "pages/profile/edit/edit",
+    "pages/profile/password/password"
+  ],
+  "window": {
+    "navigationBarTitleText": "校园便利服务",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#ffffff"
+  },
+  "tabBar": {
+    "color": "#80918f",
+    "selectedColor": "#12a594",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/tabbar/home.png",
+        "selectedIconPath": "assets/tabbar/home-active.png"
+      },
+      {
+        "pagePath": "pages/idle/list/list",
+        "text": "闲置",
+        "iconPath": "assets/tabbar/idle.png",
+        "selectedIconPath": "assets/tabbar/idle-active.png"
+      },
+      {
+        "pagePath": "pages/errand/list/list",
+        "text": "代拿",
+        "iconPath": "assets/tabbar/errand.png",
+        "selectedIconPath": "assets/tabbar/errand-active.png"
+      },
+      {
+        "pagePath": "pages/chat/list/list",
+        "text": "消息",
+        "iconPath": "assets/tabbar/chat.png",
+        "selectedIconPath": "assets/tabbar/chat-active.png"
+      },
+      {
+        "pagePath": "pages/profile/index/index",
+        "text": "我的",
+        "iconPath": "assets/tabbar/profile.png",
+        "selectedIconPath": "assets/tabbar/profile-active.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于发布代拿或闲置时选择取件、送达、交易位置，并计算距离。"
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation",
+    "chooseLocation"
+  ],
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

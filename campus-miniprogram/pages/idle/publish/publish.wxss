@@ -1,0 +1,35 @@
+.page {
+  background: #ffffff;
+  padding-bottom: 48rpx;
+}
+
+.field {
+  width: 100%;
+  height: 82rpx;
+  margin-bottom: 20rpx;
+  padding: 0 24rpx;
+  border-radius: 12rpx;
+  background: #f8fafc;
+  border: 1rpx solid #e6ebf0;
+  box-sizing: border-box;
+  color: #17212b;
+  font-size: 26rpx;
+}
+
+.textarea {
+  min-height: 220rpx;
+  margin-bottom: 20rpx;
+  padding: 22rpx 24rpx;
+  border-radius: 12rpx;
+  background: #f8fafc;
+  border: 1rpx solid #e6ebf0;
+  width: 100%;
+  box-sizing: border-box;
+  color: #17212b;
+  font-size: 26rpx;
+  line-height: 1.55;
+}
+
+.primary-btn {
+  margin-top: 8rpx;
+}

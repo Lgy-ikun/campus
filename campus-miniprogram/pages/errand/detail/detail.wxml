@@ -1,0 +1,81 @@
+<view class="page" wx:if="{{ detail }}">
+  <view class="card">
+    <view class="title">{{ detail.title }}</view>
+    <view class="reward">¥{{ detail.reward }}</view>
+    <view class="subtitle">订单编号：{{ detail.order_id }}</view>
+    <view class="subtitle">状态：{{ detail.statusText }}</view>
+    <view wx:if="{{ detail.receiver_id }}" class="subtitle">接单人：{{ detail.receiver_name || "接单同学" }}</view>
+    <view class="subtitle">发布时间：{{ detail.createTimeText }}</view>
+    <view wx:if="{{ detail.expect_time }}" class="subtitle">期望送达：{{ detail.expect_time }}</view>
+    <view wx:if="{{ detail.finishTimeText }}" class="subtitle">完成时间：{{ detail.finishTimeText }}</view>
+    <view wx:if="{{ detail.status === 3 }}" class="subtitle">说明：发布方在 24 小时内未确认时，系统会自动改为已完成。</view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">订单说明</view>
+    <view class="subtitle">{{ detail.description || "发布方未填写更多说明。" }}</view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">地点与导航</view>
+    <view class="subtitle">{{ locationReady ? "已按你当前的位置估算距离。" : "暂未获取到你的位置，点击下方按钮后可重新尝试计算距离。" }}</view>
+    <button class="outline-btn refresh-btn" bindtap="handleRefreshDistance">刷新我的距离</button>
+
+    <view class="location-block">
+      <view class="location-head">
+        <view class="location-title">取件点</view>
+        <view wx:if="{{ detail.pickDistanceText }}" class="location-distance">距你 {{ detail.pickDistanceText }}</view>
+      </view>
+      <view class="subtitle">{{ detail.pick_address }}</view>
+      <button wx:if="{{ detail.canNavigatePick }}" class="outline-btn location-btn" bindtap="handleNavigatePick">导航到取件点</button>
+    </view>
+
+    <view class="location-block">
+      <view class="location-head">
+        <view class="location-title">送达点</view>
+        <view wx:if="{{ detail.deliverDistanceText }}" class="location-distance location-distance-soft">距你 {{ detail.deliverDistanceText }}</view>
+      </view>
+      <view class="subtitle">{{ detail.deliver_address }}</view>
+      <button wx:if="{{ detail.canNavigateDeliver }}" class="outline-btn location-btn" bindtap="handleNavigateDeliver">导航到送达点</button>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">联系与隐私</view>
+    <view wx:if="{{ detail.contact_visible }}" class="subtitle">联系方式：{{ detail.contact_info }}</view>
+    <view wx:else class="subtitle">当前不展示私人联系方式。</view>
+    <view wx:if="{{ !detail.contact_visible }}" class="subtitle">未接单前也可以通过平台内部聊天沟通；联系方式只会在接单成功后向接单方展示。</view>
+    <button wx:if="{{ detail.contact_visible }}" class="outline-btn" style="margin-top: 20rpx;" bindtap="handleCopy">复制联系方式</button>
+  </view>
+
+  <view wx:if="{{ detail.reject_reason }}" class="card">
+    <view class="section-title">处理原因</view>
+    <view class="subtitle">{{ detail.reject_reason }}</view>
+  </view>
+
+  <view wx:if="{{ detail.images.length }}" class="card">
+    <view class="section-title">订单图片</view>
+    <view class="image-list">
+      <image
+        wx:for="{{ detail.images }}"
+        wx:key="*this"
+        class="detail-image"
+        src="{{ item }}"
+        mode="aspectFill"
+        data-current="{{ item }}"
+        data-src="{{ item }}"
+        bindtap="previewImage"
+        binderror="handleImageError"
+      />
+    </view>
+  </view>
+
+  <button wx:if="{{ !isPublisher && !detail.receiver_id && detail.status === 1 }}" class="primary-btn" bindtap="handleReceive">立即接单</button>
+  <button wx:if="{{ detail.canEdit }}" class="primary-btn" bindtap="handleEdit">重新编辑并提交</button>
+  <button wx:if="{{ detail.canCancel }}" class="danger-btn" bindtap="handleCancel">取消订单</button>
+  <button wx:if="{{ isReceiver && detail.status === 2 }}" class="primary-btn" bindtap="handleDelivered">已送达</button>
+  <button wx:if="{{ isPublisher && detail.status === 3 }}" class="primary-btn" bindtap="handleConfirm">确认完成</button>
+  <button wx:if="{{ isPublisher && detail.can_release_receiver }}" class="outline-btn" style="margin-top: 20rpx;" bindtap="handleRelease">取消当前接单并重新开放</button>
+  <button wx:if="{{ !isPublisher }}" class="outline-btn" style="margin-top: 20rpx;" bindtap="handleReport">举报订单</button>
+  <button wx:if="{{ !isPublisher || (isPublisher && detail.receiver_id) }}" class="outline-btn" style="margin-top: 20rpx;" bindtap="goChat">进入聊天</button>
+</view>

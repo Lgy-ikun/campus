@@ -1,0 +1,108 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.filter-row {
+  display: flex;
+  gap: 16rpx;
+}
+
+.filter-chip {
+  flex: 1;
+  padding: 18rpx 24rpx;
+  border-radius: 999rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #4b5563;
+  background: #f3f7f1;
+  border: 2rpx solid transparent;
+}
+
+.filter-chip.active {
+  color: #168d75;
+  background: #ecfdf3;
+  border-color: #168d75;
+  font-weight: 700;
+}
+
+.login-section-title {
+  font-size: 31rpx;
+  font-weight: 700;
+  color: #17212b;
+  line-height: 1.4;
+}
+
+.phone-mask-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+  margin-top: 22rpx;
+  padding: 22rpx 24rpx;
+  border-radius: 16rpx;
+  background: #f8fafc;
+  border: 1rpx solid #e6ebf0;
+}
+
+.mask-label {
+  color: #667085;
+  font-size: 23rpx;
+  line-height: 1.4;
+}
+
+.mask-value {
+  margin-top: 8rpx;
+  color: #17212b;
+  font-size: 36rpx;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.refresh-mask-btn {
+  flex-shrink: 0;
+  width: 176rpx;
+  margin-top: 0;
+}
+
+.warning-text {
+  margin-top: 16rpx;
+  padding: 16rpx 18rpx;
+  border-radius: 12rpx;
+  background: #fff7ed;
+  color: #b54708;
+  font-size: 24rpx;
+  line-height: 1.6;
+}
+
+.agreement-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12rpx;
+  margin-top: 22rpx;
+}
+
+.agreement-text {
+  flex: 1;
+  min-width: 0;
+  color: #475467;
+  font-size: 24rpx;
+  line-height: 1.65;
+}
+
+.agreement-link {
+  color: #175cd3;
+}
+
+.hint-text {
+  margin-top: 18rpx;
+  color: #8a919f;
+  font-size: 23rpx;
+  line-height: 1.6;
+}
+
+.primary-btn,
+.outline-btn {
+  margin-top: 12rpx;
+}

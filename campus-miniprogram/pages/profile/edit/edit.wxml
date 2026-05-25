@@ -1,0 +1,42 @@
+<view class="page edit-page">
+  <view class="card hero-card">
+    <view class="title">编辑资料</view>
+    <view class="subtitle">
+      {{ role === 'admin' ? '支持维护管理员姓名和手机号。' : '支持修改头像、昵称和手机号。' }}
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="avatar-row">
+      <image wx:if="{{ form.avatar }}" class="avatar" src="{{ form.avatar }}" mode="aspectFill" />
+      <view wx:else class="avatar avatar-fallback">{{ avatarText }}</view>
+      <button class="outline-btn avatar-btn" loading="{{ uploading }}" bindtap="handleChooseAvatar">更换头像</button>
+    </view>
+  </view>
+
+  <view class="card form-card">
+    <block wx:if="{{ role === 'admin' }}">
+      <view class="field-item">
+        <view class="field-label">姓名</view>
+        <input class="field-input" placeholder="请输入管理员姓名" value="{{ form.real_name }}" data-field="real_name" bindinput="handleInput" />
+      </view>
+      <view class="field-item">
+        <view class="field-label">手机号</view>
+        <input class="field-input" placeholder="请输入手机号" value="{{ form.phone }}" data-field="phone" bindinput="handleInput" />
+      </view>
+    </block>
+
+    <block wx:else>
+      <view class="field-item">
+        <view class="field-label">昵称</view>
+        <input class="field-input" placeholder="请输入昵称" value="{{ form.nickname }}" data-field="nickname" bindinput="handleInput" />
+      </view>
+      <view class="field-item">
+        <view class="field-label">手机号</view>
+        <input class="field-input" type="number" maxlength="11" placeholder="请输入手机号" value="{{ form.phone }}" data-field="phone" bindinput="handleInput" />
+      </view>
+    </block>
+  </view>
+
+  <button class="primary-btn save-btn" loading="{{ saving }}" bindtap="handleSave">保存资料</button>
+</view>

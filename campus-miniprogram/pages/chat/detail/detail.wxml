@@ -1,0 +1,53 @@
+<view class="page chat-detail-page">
+  <view class="chat-head card">
+    <view>
+      <view class="chat-title">{{ partnerName }}</view>
+      <view class="chat-meta">
+        当前关联：{{ relatedType === "errand" ? "代拿订单" : relatedType === "idle" ? "闲置咨询" : "业务会话" }}
+      </view>
+    </view>
+    <button class="outline-btn pin-btn" bindtap="handleTogglePin">
+      {{ isPinned ? "取消置顶" : "置顶会话" }}
+    </button>
+  </view>
+
+  <scroll-view scroll-y class="chat-scroll" scroll-into-view="{{ scrollIntoView }}" scroll-with-animation>
+    <view wx:for="{{ messages }}" wx:key="renderKey" id="msg-{{ item.renderKey }}" class="message-row {{ item.isSelf ? 'self' : '' }}">
+      <view class="message-bubble {{ item.isImage ? 'image-bubble' : '' }}">
+        <image
+          wx:if="{{ item.isImage }}"
+          class="message-image"
+          src="{{ item.content }}"
+          mode="aspectFit"
+          data-current="{{ item.content }}"
+          bindtap="previewImage"
+        />
+        <text wx:else>{{ item.content }}</text>
+      </view>
+      <view class="message-time">{{ item.timeText }}</view>
+    </view>
+  </scroll-view>
+
+  <view class="composer">
+    <view
+      class="composer-action media-btn"
+      hover-class="composer-action--hover"
+      bindtap="handleSendImage"
+    >
+      <text wx:if="{{ !sendingImage }}" class="media-btn__plus">＋</text>
+      <text wx:else class="media-btn__loading">...</text>
+    </view>
+    <textarea
+      class="composer-input"
+      value="{{ content }}"
+      placeholder="输入消息内容"
+      placeholder-class="composer-placeholder"
+      bindinput="handleInput"
+      auto-height
+      maxlength="-1"
+      show-confirm-bar="{{ false }}"
+      cursor-spacing="{{ 16 }}"
+    ></textarea>
+    <view class="composer-action send-btn" hover-class="send-btn--hover" bindtap="handleSend">发送</view>
+  </view>
+</view>

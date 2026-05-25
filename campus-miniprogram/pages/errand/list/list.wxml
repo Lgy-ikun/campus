@@ -1,0 +1,41 @@
+<view class="page service-page">
+  <view class="card hero-card">
+    <view class="title">代拿大厅</view>
+    <view class="subtitle">查看待接单任务，快速发布新的代拿需求，也可以直接进入自己的订单页继续处理。</view>
+  </view>
+
+  <view class="card search-card">
+    <input class="field" placeholder="搜索标题或描述" value="{{ keyword }}" bindinput="handleInput" />
+    <view class="action-row">
+      <button class="outline-btn" bindtap="loadData">搜索</button>
+      <button class="outline-btn" bindtap="goMyOrder">我的订单</button>
+      <button class="primary-btn" bindtap="goPublish">发布代拿</button>
+    </view>
+    <view class="location-tip">
+      {{ locationReady ? "已按你当前的位置估算到取件点和送达点的距离。" : "暂未获取到你的定位，进入详情页后仍可直接导航到取件点和送达点。" }}
+    </view>
+  </view>
+
+  <view wx:if="{{ list.length }}">
+    <view wx:for="{{ list }}" wx:key="order_id" class="card order-card" data-id="{{ item.order_id }}" bindtap="goDetail">
+      <view class="row-top">
+        <view class="row-title">{{ item.title }}</view>
+        <view class="row-price">¥{{ item.reward }}</view>
+      </view>
+      <view class="row-meta">订单编号：#{{ item.order_id }}</view>
+      <view class="row-meta">取件：{{ item.pick_address }}</view>
+      <view class="row-meta">送达：{{ item.deliver_address }}</view>
+      <view wx:if="{{ item.pickDistanceText || item.deliverDistanceText }}" class="distance-row">
+        <view wx:if="{{ item.pickDistanceText }}" class="distance-tag">距取件点 {{ item.pickDistanceText }}</view>
+        <view wx:if="{{ item.deliverDistanceText }}" class="distance-tag distance-tag-soft">距送达点 {{ item.deliverDistanceText }}</view>
+      </view>
+      <view class="row-meta">状态：{{ item.statusText }}</view>
+      <view wx:if="{{ item.expect_time }}" class="row-meta">期望送达：{{ item.expect_time }}</view>
+      <view class="row-meta">发布时间：{{ item.createTimeText }}</view>
+    </view>
+  </view>
+
+  <view wx:else class="card empty-card">
+    <view class="subtitle">暂时没有符合条件的代拿订单，稍后再来看看。</view>
+  </view>
+</view>

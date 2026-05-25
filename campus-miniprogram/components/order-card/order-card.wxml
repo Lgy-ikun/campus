@@ -1,0 +1,6 @@
+<view class="card order-card">
+  <view class="order-title">{{ item.title }}</view>
+  <view class="order-meta">地址：{{ item.pick_address || '-' }}</view>
+  <view class="order-meta">状态：{{ item.statusText || item.status }}</view>
+  <view class="order-meta">时间：{{ item.createTimeText || item.create_time || '-' }}</view>
+</view>

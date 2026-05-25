@@ -1,0 +1,48 @@
+<view class="page my-goods-page">
+  <view class="card">
+    <view class="title">我的闲置发布</view>
+    <view class="subtitle">管理待审核、已上架、已下架和已售出的商品。下架后也可以重新编辑发布。</view>
+    <view class="filter-row">
+      <view class="filter-chip {{ currentFilter === 'all' ? 'active' : '' }}" data-value="all" bindtap="handleFilterChange">全部</view>
+      <view class="filter-chip {{ currentFilter === '0' ? 'active' : '' }}" data-value="0" bindtap="handleFilterChange">待审核</view>
+      <view class="filter-chip {{ currentFilter === '2' ? 'active' : '' }}" data-value="2" bindtap="handleFilterChange">已驳回</view>
+      <view class="filter-chip {{ currentFilter === '1' ? 'active' : '' }}" data-value="1" bindtap="handleFilterChange">已上架</view>
+      <view class="filter-chip {{ currentFilter === '3' ? 'active' : '' }}" data-value="3" bindtap="handleFilterChange">已下架</view>
+      <view class="filter-chip {{ currentFilter === '4' ? 'active' : '' }}" data-value="4" bindtap="handleFilterChange">已售出</view>
+    </view>
+    <button class="primary-btn publish-btn" bindtap="goPublish">继续发布</button>
+  </view>
+
+  <view wx:if="{{ list.length }}">
+    <view wx:for="{{ list }}" wx:key="goods_id" class="record-card">
+      <view class="record-main" data-id="{{ item.goods_id }}" bindtap="goDetail">
+        <view class="record-cover">
+          <image wx:if="{{ item.coverImage }}" class="record-image" src="{{ item.coverImage }}" mode="aspectFill" data-src="{{ item.coverImage }}" binderror="handleImageError" />
+          <view wx:else class="record-placeholder">暂无图片</view>
+          <view class="record-status">{{ item.statusText }}</view>
+        </view>
+
+        <view class="record-info">
+          <view class="record-header">
+            <view class="record-title">{{ item.title }}</view>
+            <view class="record-price">￥{{ item.price }}</view>
+          </view>
+          <view class="record-desc">{{ item.description || "卖家暂未填写描述" }}</view>
+          <view class="record-meta">商品编号：{{ item.goods_id }}</view>
+          <view wx:if="{{ item.trade_address }}" class="record-meta">交易地点：{{ item.trade_address }}</view>
+        </view>
+      </view>
+
+      <view wx:if="{{ item.reject_reason }}" class="record-reason">处理原因：{{ item.reject_reason }}</view>
+
+      <view class="record-footer">
+        <button wx:if="{{ item.canEdit }}" class="primary-btn footer-btn" data-id="{{ item.goods_id }}" catchtap="goEdit">{{ item.editText }}</button>
+        <button wx:if="{{ item.status === 1 }}" class="outline-btn footer-btn" data-id="{{ item.goods_id }}" catchtap="handleDown">下架商品</button>
+      </view>
+    </view>
+  </view>
+
+  <view wx:else class="card empty-card">
+    <view class="subtitle">你还没有发布任何闲置商品。</view>
+  </view>
+</view>

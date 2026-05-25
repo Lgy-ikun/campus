@@ -1,0 +1,63 @@
+<view class="page chat-page">
+  <view class="card hero-card">
+    <view class="title">会话列表</view>
+    <view class="subtitle">当前未读消息数：{{ unreadCount }}</view>
+  </view>
+
+  <view class="card notice-entry" bindtap="goNoticeCenter">
+    <view class="notice-entry-main">
+      <view class="notice-entry-title">系统通知</view>
+      <view class="notice-entry-desc">审核结果、代拿进度和平台提醒会统一汇总到这里。</view>
+    </view>
+    <view wx:if="{{ noticeUnreadCount }}" class="notice-entry-badge">{{ noticeUnreadCount }}</view>
+    <view wx:else class="notice-entry-arrow">查看</view>
+  </view>
+
+  <view class="card search-card">
+    <input
+      class="search-input"
+      placeholder="搜索联系人、业务或消息内容"
+      value="{{ keyword }}"
+      bindinput="handleKeywordInput"
+      confirm-type="search"
+    />
+    <view wx:if="{{ keyword }}" class="search-clear" bindtap="clearKeyword">清空</view>
+  </view>
+
+  <view wx:if="{{ sessions.length }}">
+    <view
+      wx:for="{{ sessions }}"
+      wx:key="index"
+      class="card session-card"
+      data-index="{{ index }}"
+      bindtap="goDetail"
+      bindlongpress="handleSessionLongPress"
+    >
+      <view class="session-top">
+        <view class="session-name-wrap">
+          <view class="session-name">{{ item.partner_name || '聊天对象' }}</view>
+          <view wx:if="{{ item.isPinned }}" class="session-pinned">置顶</view>
+        </view>
+        <view class="session-time">{{ item.lastTimeText }}</view>
+      </view>
+      <view class="session-meta">{{ item.businessText }}</view>
+      <view class="session-content-row">
+        <image wx:if="{{ item.thumbnailUrl }}" class="session-thumb" src="{{ item.thumbnailUrl }}" mode="aspectFill" />
+        <view class="session-content">{{ item.lastPreviewText }}</view>
+      </view>
+      <view class="session-hint">长按可置顶或删除会话</view>
+      <view wx:if="{{ item.unreadText }}" class="session-unread">未读 {{ item.unreadText }}</view>
+    </view>
+  </view>
+
+  <view wx:elif="{{ allSessions.length }}" class="card empty-card">
+    <view class="subtitle">没有匹配的会话结果，换个关键词再试试。</view>
+    <button class="outline-btn" bindtap="clearKeyword">清空搜索</button>
+  </view>
+
+  <view wx:else class="card empty-card">
+    <view class="subtitle">当前还没有任何会话记录。完成代拿或闲置交易后，双方就可以在这里继续沟通。</view>
+    <button class="outline-btn" bindtap="loadData">刷新会话列表</button>
+  </view>
+
+</view>
